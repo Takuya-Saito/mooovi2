@@ -6,9 +6,12 @@ class ReviewsController < RankingController
   end
 
   def create
-    binding.pry
+    # binding.pry
     review = Review.new(review_params)
     review.save
+    # redirect_to :root
+    # redirect_to root_path
+    redirect_to controller: :products, action: :index
   end
 
   private
