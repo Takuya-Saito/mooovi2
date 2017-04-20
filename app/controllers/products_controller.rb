@@ -8,5 +8,6 @@ class ProductsController < RankingController
   end
 
   def search
+    @products = Product.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
   end
 end
