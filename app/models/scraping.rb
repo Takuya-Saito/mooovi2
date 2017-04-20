@@ -9,6 +9,10 @@ class Scraping
       url = "http://review-movie.herokuapp.com" + relative_url
       urls << url
     end
+    save_movie_info(urls)
+  end
+
+  def self.save_movie_info(urls)
     urls.each do |url|
       page = Mechanize.new().get(url)
       title = page.at('h2.entry-title').inner_text
