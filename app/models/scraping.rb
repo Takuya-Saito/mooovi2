@@ -20,7 +20,7 @@ class Scraping
       director = page.at('.director span').inner_text
       detail = page.at('.entry-content p').inner_text
       open_date = page.at('.date span').inner_text
-      product = Product.new(title: title, image_url: image_url, director: director, detail: detail, open_date: open_date)
+      product = Product.where(title: title, image_url: image_url, director: director, detail: detail, open_date: open_date).first_or_initialize
       product.save
     end
   end
