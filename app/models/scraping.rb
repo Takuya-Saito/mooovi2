@@ -2,20 +2,19 @@ class Scraping
 
   def self.get_movie_url
     next_url = ""
-    while true do
+    urls = []
+    while next_url  do
       info_all = Mechanize.new().get('http://review-movie.herokuapp.com' + next_url)
       info_url = info_all.search('h2.entry-title a')
-      urls = []
       info_url.each do |info|
         relative_url = info.get_attribute('href')
         url = "http://review-movie.herokuapp.com" + relative_url
         urls << url
       end
-      save_movie_info(urls)
       next_link = info_all.at('.next a')
-      break unless next_link
-      next_url = next_link[:href]
+      next_url = next_link ? next_link[:href] : nil
     end
+    save_movie_info(urls)
   end
 
   def self.save_movie_info(urls)
