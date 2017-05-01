@@ -23,6 +23,9 @@
               </li>
               <% if user_signed_in? %>
                 <li class="entry_button" style="float: right">
+                  <%= link_to 'マイページ', user_path(current_user.id) %>
+                </li>
+                <li class="entry_button" style="float: right">
                   <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>

@@ -5,5 +5,6 @@ TechReviewSite::Application.routes.draw do
   resources :products, only: [:show] do
     resources :reviews, only: [:new, :create]
   end
+  resources :users, only: [:show]
 
 end
