@@ -21,6 +21,15 @@
               <li class="entry_button" style="float: right">
                 <a href="/products/search">投稿する</a>
               </li>
+              <% if user_signed_in? %>
+                <li class="entry_button" style="float: right">
+                  <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li class="entry_button" style="float: right">
+                  <%= link_to 'サインイン', new_user_session_path %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </nav>
