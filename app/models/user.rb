@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
 
   validates :nickname, presence:true
 
+  has_many :reviews
 end
